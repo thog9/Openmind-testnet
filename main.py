@@ -50,6 +50,10 @@ def _clear():
 async def run_mintnft(language: str):
     from scripts.mintnft import run_mintnft as mintnft_run
     await mintnft_run(language)
+
+async def run_mintommi(language: str):
+    from scripts.mintommi import run_mintommi as mintommi_run
+    await mintommi_run(language)
     
 async def cmd_exit(language: str):
     messages = {"vi": "Đang thoát...", "en": "Exiting..."}
@@ -59,6 +63,7 @@ async def cmd_exit(language: str):
 # Danh sách lệnh menu
 SCRIPT_MAP = {
     "mintnft": run_mintnft,
+    "mintommi": run_mintommi,
     "exit": cmd_exit
 }
 
@@ -68,12 +73,13 @@ def get_available_scripts(language):
     scripts = {
         'vi': [
             {"name": "1. Tự động mint NFT OpenMind Identity (OMI) │ OpenMind Testnet", "value": "mintnft"},
+            {"name": "2. Tự động mint NFT OpenMind Machine Identity (OMMI) │ OpenMind Testnet", "value": "mintommi"},
 
             {"name": "X. Thoát", "value": "exit"},
         ],
         'en': [
             {"name": "1. Auto mint NFT OpenMind Identity (OMI) │ OpenMind Testnet", "value": "mintnft"},
-
+            {"name": "2. Auto mint NFT OpenMind Machine Identity (OMMI) │ OpenMind Testnet", "value": "mintommi"},
 
             {"name": "X. Thoát", "value": "exit"},
         ]
@@ -186,4 +192,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
